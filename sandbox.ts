@@ -12,3 +12,66 @@ const circ = (dia: number) => {
 }
 
 console.log(circ(21))
+
+//the initial types and properties need to be matched to prevent errors in typescript
+
+// arrays
+let animals = ["cat", "dog", "bird"] 
+
+// these will throw errors
+// animals.push(4)
+// animals[0] = 2
+// animals = "cat"
+
+// objects
+let user = {
+  name: "kek",
+  age: 27,
+  occupation: "carpenter"
+}
+
+// these will throw errors
+// user.hobies = ["skiing", "surfing"]
+// user.name = 223
+// user = ["some guy"]
+
+// but this will not because it matches all the properties and their types
+user = {
+  name: "mik",
+  age: 22,
+  occupation: "baker" 
+}
+
+// defining types explicitly
+// even though they are undefined they will only accept certain types of values I define
+let char: string;
+let years: number;
+let isHere: boolean;
+
+// arrays
+// made it equal to an empty array so I can push stuff later, got the logic here  
+let people: string[] = [];
+
+
+// union types are used for accepting multiple types
+// need to use "()" for arrays, now can push here strings, numbers or booleans
+let multiple: (string|number|boolean)[] = [];
+// this can be equal to a string or a number, pretty obvious though
+let userID: string|number;
+
+// defining object type
+let userOne: {};
+// this works 
+userOne = { name:"niki", petNum: 2, age:42};
+// don't forget array is a type of object too so when you define the tpye as 
+// object it can still be equal to an array, so this won't throw and error
+userOne = []
+// or you can define it like this, looks like creating a schema for mongodb
+let userTwo: {
+  name: string,
+  petNum: number,
+  age: number|string
+}
+// these are both fine
+userTwo = { name:"jumpa", petNum: 3, age: "33"}
+userTwo = { name:"jumpa", petNum: 3, age: 33}
