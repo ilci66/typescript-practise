@@ -71,3 +71,8 @@
 // mixed.push("cat")
 // mixed.push(true)
 // mixed.push(77)
+// // "any" can be used like this in objects
+// let user: {name: any, age: any};
+// user = {name: "jamie", age: "33"};
+// // or
+// user = {name: "king slayer", age: 33}

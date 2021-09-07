@@ -66,8 +66,13 @@
 // person = 22
 // person = "hello"
 // person = {name: "cathy"}
-// works the same way with arrays
-var mixed = [];
-mixed.push("cat");
-mixed.push(true);
-mixed.push(77);
+// // works the same way with arrays
+// let mixed: any[] = [];
+// mixed.push("cat")
+// mixed.push(true)
+// mixed.push(77)
+// // "any" can be used like this in objects
+var user;
+user = { name: "jamie", age: "33" };
+// or
+user = { name: "king slayer", age: 33 };
