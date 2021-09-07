@@ -1,3 +1,4 @@
+"use strict";
 // //"tsc sandbox.ts -w" command is very annoying don't use it, compile when you want to manually
 // const test = "testing"
 // console.log(test)
@@ -72,7 +73,8 @@
 // mixed.push(true)
 // mixed.push(77)
 // // "any" can be used like this in objects
-var user;
-user = { name: "jamie", age: "33" };
-// or
-user = { name: "king slayer", age: 33 };
+// let user: {name: any, age: any};
+// user = {name: "jamie", age: "33"};
+// // or
+// user = {name: "king slayer", age: 33}
+// some more testing
