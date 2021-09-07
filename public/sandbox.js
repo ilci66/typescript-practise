@@ -77,4 +77,31 @@
 // user = {name: "jamie", age: "33"};
 // // or
 // user = {name: "king slayer", age: 33}
-// some more testing
+// FUNCTIONS
+// functions can be given types before defining as well
+var greeting;
+// so this throws an error
+// greet= "wassap"
+// but this doesn't
+greeting = function () {
+    console.log('wassap general kenobi');
+};
+// arguements can also have types
+var add = function (a, b) { console.log(a + b); };
+// optional arguements can be defined with "?" 
+var divide = function (a, b, c) {
+    console.log(a / b);
+    // if there's no third argument it will show undefined
+    console.log("and this is the third one", c);
+};
+// defaults also can be defined like this
+var divide2 = function (a, b, c) {
+    if (c === void 0) { c = 2; }
+    console.log(a / b);
+    console.log("and this is the third one", c);
+    return a / b;
+};
+// the returned value's type is given to the variable defined to, in this case number
+var divided2 = divide2(10, 22);
+// if nothing is returned the type becomes void and void is not undefined
+var divided = divide(55, 55);

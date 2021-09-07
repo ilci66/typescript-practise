@@ -77,4 +77,30 @@
 // // or
 // user = {name: "king slayer", age: 33}
 
-// some more testing
+// FUNCTIONS
+// functions can be given types before defining as well
+let greeting: Function;
+// so this throws an error
+// greet= "wassap"
+// but this doesn't
+greeting = () => {
+  console.log('wassap general kenobi')
+}
+// arguements can also have types
+const add = (a: number, b:number) => {console.log(a+b)}
+// optional arguements can be defined with "?" 
+const divide = (a:number, b:number, c?: number | string) => {
+  console.log(a/b)
+  // if there's no third argument it will show undefined
+  console.log("and this is the third one", c)
+}
+// defaults also can be defined like this
+const divide2 = (a:number, b:number, c: number | string = 2) => {
+  console.log(a/b)
+  console.log("and this is the third one", c)
+  return a/b
+}
+// the returned value's type is given to the variable defined to, in this case number
+const divided2 = divide2(10,22)
+// if nothing is returned the type becomes void and void is not undefined
+const divided = divide(55,55)
