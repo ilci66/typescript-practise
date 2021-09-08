@@ -1,8 +1,9 @@
-"use strict";
+// importing the Invoice class with "js" extension not "ts", important
+import { Invoice } from './classes/Invoice.js';
 // I don't like to use /* */ so gonna do double comment 
 // You need to put the "!" in the end if you know the element exists
 // otherwise ts will throw and error, saying it might be equal to null
-var anchor = document.querySelector('a');
+const anchor = document.querySelector('a');
 // or you could do an if, but the method above is better
 // if(anchor){
 //   console.log(anchor.href);
@@ -13,15 +14,15 @@ console.log(anchor.href);
 // the type element instead of the actual type because a class could be 
 // given to any element, in that case you need to specify the type 
 // no "!" here don't forget
-var form = document.querySelector('.new-item-form');
+const form = document.querySelector('.new-item-form');
 // console.log(form.children)
 // this way we can also select inputs
-var type = document.querySelector('#type');
-var tofrom = document.querySelector('#tofrom');
-var details = document.querySelector('#details');
-var amount = document.querySelector('#amount');
+const type = document.querySelector('#type');
+const tofrom = document.querySelector('#tofrom');
+const details = document.querySelector('#details');
+const amount = document.querySelector('#amount');
 // "Event" is also a built in type
-form.addEventListener('submit', function (e) {
+form.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log(type.value, tofrom.value, details.value, 
     // amount.value
@@ -77,24 +78,23 @@ form.addEventListener('submit', function (e) {
 //     return `${this.client} owes ${this.amount} for ${this.details}`
 //   }
 // }
-// wtih the usage of access modifiers the whole class can be shorthanded
-var Invoice = /** @class */ (function () {
-    function Invoice(client, details, amount) {
-        this.client = client;
-        this.details = details;
-        this.amount = amount;
-    }
-    Invoice.prototype.format = function () {
-        return this.client + " owes " + this.amount + " for " + this.details;
-    };
-    return Invoice;
-}());
-var invOne = new Invoice("mario", "mario website", 200);
-var invTwo = new Invoice("luigi", "luigi website", 150);
-var invoices = [];
+// with the usage of access modifiers the whole class can be shorthanded
+// class Invoice { 
+//   constructor( 
+//     readonly client: string, 
+//     private details: string, 
+//     public amount: number
+//   ) {}
+//   format() {
+//     return `${this.client} owes ${this.amount} for ${this.details}`
+//   }
+// }
+const invOne = new Invoice("mario", "mario website", 200);
+const invTwo = new Invoice("luigi", "luigi website", 150);
+let invoices = [];
 invoices.push(invOne);
 invoices.push(invTwo);
-invoices.forEach(function (inv) {
+invoices.forEach(inv => {
     // private values are still accessible this way as I wrote above
-    console.log(inv.client + " " + inv.amount + " " + inv.format());
+    console.log(`${inv.client} ${inv.amount} ${inv.format()}`);
 });

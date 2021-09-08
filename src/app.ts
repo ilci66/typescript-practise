@@ -1,3 +1,7 @@
+// importing the Invoice class with "js" extension not "ts", important
+import { Invoice } from './classes/Invoice.js'
+
+
 // I don't like to use /* */ so gonna do double comment 
 // You need to put the "!" in the end if you know the element exists
 // otherwise ts will throw and error, saying it might be equal to null
@@ -86,17 +90,18 @@ form.addEventListener('submit', (e: Event) => {
 //   }
 // }
 
+// >>>> I carried this into a different module
 // with the usage of access modifiers the whole class can be shorthanded
-class Invoice { 
-  constructor( 
-    readonly client: string, 
-    private details: string, 
-    public amount: number
-  ) {}
-  format() {
-    return `${this.client} owes ${this.amount} for ${this.details}`
-  }
-}
+// class Invoice { 
+//   constructor( 
+//     readonly client: string, 
+//     private details: string, 
+//     public amount: number
+//   ) {}
+//   format() {
+//     return `${this.client} owes ${this.amount} for ${this.details}`
+//   }
+// }
 
 const invOne = new Invoice("mario", "mario website", 200);
 const invTwo = new Invoice("luigi", "luigi website", 150);
