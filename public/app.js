@@ -78,6 +78,7 @@ form.addEventListener('submit', (e) => {
 //     return `${this.client} owes ${this.amount} for ${this.details}`
 //   }
 // }
+// >>>> I carried this into a different module
 // with the usage of access modifiers the whole class can be shorthanded
 // class Invoice { 
 //   constructor( 
@@ -98,3 +99,24 @@ invoices.forEach(inv => {
     // private values are still accessible this way as I wrote above
     console.log(`${inv.client} ${inv.amount} ${inv.format()}`);
 });
+// any variable that claims to be a person needs to have these all the IsPerson 
+// properties, no more no less
+const me = {
+    name: "Ilker",
+    age: 27,
+    // I don't need to specify the retun type it's inferred but adding it 
+    // just to be explicit cause I'm learning 
+    speak(text) {
+        console.log(text);
+    },
+    spend(amount) {
+        console.log(`spending this much: ${amount}`);
+        return amount;
+    }
+};
+// now I can even write a function that expects this interface as an argument
+const greetPerson = (person) => {
+    console.log('Hi!', person.name);
+};
+greetPerson(me);
+console.log(me);
