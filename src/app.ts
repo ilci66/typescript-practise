@@ -86,7 +86,7 @@ form.addEventListener('submit', (e: Event) => {
 //   }
 // }
 
-// wtih the usage of access modifiers the whole class can be shorthanded
+// with the usage of access modifiers the whole class can be shorthanded
 class Invoice { 
   constructor( 
     readonly client: string, 
