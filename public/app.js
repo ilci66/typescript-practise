@@ -30,11 +30,59 @@ form.addEventListener('submit', function (e) {
     amount.valueAsNumber);
 });
 // // >>>>> CLASSES
+// class Invoice {
+//   // you can define the types before the constructor
+//   client: string;
+//   details: string;
+//   amount: number;
+//   constructor( c:string, d:string, a:number){
+//     this.client = c;
+//     this.details = d;
+//     this.amount = a;
+//   }
+//   format() {
+//     return `${this.client} owes ${this.amount} for ${this.details}`
+//   }
+// }
+// const invOne = new Invoice("mario", "mario website", 200);
+// const invTwo = new Invoice("luigi", "luigi website", 150);
+// // now I can create and array and define the type to "Invoice" so it 
+// // only accepts objects created using the Invoice class
+// let invoices: Invoice[] = []; 
+// // intial value is "[]" so I can push stuff inside
+// invoices.push(invOne)
+// invoices.push(invTwo)
+// // I can change the values if I want want to, careful with thte type though
+// invOne.amount = 300
+// console.log(invOne)
+// console.log(invoices)
+// // REWRITING THE SAME CLASS WITH ACCESS MODIFIERS
+// class Invoice {
+//   // the default behaviour is "public" but to demonstrate I will 
+//   // add that too here
+//   // well "readonly" is pretty self explanatory but yeah you 
+//   // can't change it by assigning another value to it
+//   readonly client: string;
+//   // when it's "private" it can't be accessed outside the class but
+//   // it's still available to the format method which is inside the class
+//   private details: string;
+//   public amount: number;
+//   // 
+//   constructor( c:string, d:string, a:number){
+//     this.client = c;
+//     this.details = d;
+//     this.amount = a;
+//   }
+//   format() {
+//     return `${this.client} owes ${this.amount} for ${this.details}`
+//   }
+// }
+// wtih the usage of access modifiers the whole class can be shorthanded
 var Invoice = /** @class */ (function () {
-    function Invoice(c, d, a) {
-        this.client = c;
-        this.details = d;
-        this.amount = a;
+    function Invoice(client, details, amount) {
+        this.client = client;
+        this.details = details;
+        this.amount = amount;
     }
     Invoice.prototype.format = function () {
         return this.client + " owes " + this.amount + " for " + this.details;
@@ -43,13 +91,10 @@ var Invoice = /** @class */ (function () {
 }());
 var invOne = new Invoice("mario", "mario website", 200);
 var invTwo = new Invoice("luigi", "luigi website", 150);
-// now I can create and array and define the type to "Invoice" so it 
-// only accepts objects created using the Invoice class
 var invoices = [];
-// intial value is "[]" so I can push stuff inside
 invoices.push(invOne);
 invoices.push(invTwo);
-// I can change the values if I want want to, careful with thte type though
-invOne.amount = 300;
-console.log(invOne);
-console.log(invoices);
+invoices.forEach(function (inv) {
+    // private values are still accessible this way as I wrote above
+    console.log(inv.client + " " + inv.amount + " " + inv.format());
+});
