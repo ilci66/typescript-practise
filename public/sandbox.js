@@ -77,9 +77,63 @@
 // user = {name: "jamie", age: "33"};
 // // or
 // user = {name: "king slayer", age: 33}
-var itemId = function (uid, item) {
-    console.log(item + " with id: " + uid);
-};
-var userLogin = function (user) {
-    console.log(user.name + " logged in with id: " + user.uid);
-};
+// >>>>>>>>FUNCTIONS
+// // functions can be given types before defining as well
+// let greeting: Function;
+// // so this throws an error
+// // greet= "wassap"
+// // but this doesn't
+// greeting = () => {
+//   console.log('wassap general kenobi')
+// }
+// // arguements can also have types
+// const add = (a: number, b:number) => {console.log(a+b)}
+// // optional arguements can be defined with "?" 
+// const divide = (a:number, b:number, c?: number | string) => {
+//   console.log(a/b)
+//   // if there's no third argument it will show undefined
+//   console.log("and this is the third one", c)
+// }
+// // defaults also can be defined like this
+// const divide2 = (a:number, b:number, c: number | string = 2) => {
+//   console.log(a/b)
+//   console.log("and this is the third one", c)
+//   return a/b
+// }
+// // the returned value's type is given to the variable defined to, in this case number
+// const divided2 = divide2(10,22)
+// // if nothing is returned the type becomes void and void is not undefined
+// const divided = divide(55,55)
+// // the type of the return can be defined as well like this
+// // can be any type including void
+// const example = (a:number, b:number): number => {
+//   return a * b
+// }
+// >>>>>>>>TYPE ALIASES
+// // types can be defined similar to variables like this
+// type StringOrNum = string | number;
+// // apparently this is commonly used as well so know you can use it this way 
+// type objWithName = { name: string, uid: StringOrNum}
+// const itemId = (uid: StringOrNum, item: string) => {
+//   console.log(`${item} with id: ${uid}`)
+// }
+// // and I used here afterwards cleaning up my code a bit
+// const userLogin = (user: objWithName) => {
+//   console.log(`${user.name} logged in with id: ${user.uid}`)
+// }
+// >>>>>>>>FUNCTION SIGNATURES
+// this one will return void and I can define it before actually writing the function
+// let greet: (a: string, b: string) => void;
+// greet = (name:string, greeting:string) => {
+//   console.log(`${name}, says ${greeting}`)
+// }
+// // if I define the type of the return and it's not the same as the actual type 
+// // of the returned value it will throw an error, don't forget to return the result
+// let calculate: (a:number, b:number, c:string) => number;
+// calculate = (numOne: number, numTwo: number, action: string) => {
+//   if(action === "add") {
+//     return numOne + numTwo
+//   }else {
+//     return numOne - numTwo
+//   }
+// }

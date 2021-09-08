@@ -77,7 +77,7 @@
 // // or
 // user = {name: "king slayer", age: 33}
 
-// FUNCTIONS
+// >>>>>>>>FUNCTIONS
 // // functions can be given types before defining as well
 // let greeting: Function;
 // // so this throws an error
@@ -109,7 +109,7 @@
 // const example = (a:number, b:number): number => {
 //   return a * b
 // }
-// TYPE ALIASES
+// >>>>>>>>TYPE ALIASES
 // // types can be defined similar to variables like this
 // type StringOrNum = string | number;
 // // apparently this is commonly used as well so know you can use it this way 
@@ -121,4 +121,20 @@
 // // and I used here afterwards cleaning up my code a bit
 // const userLogin = (user: objWithName) => {
 //   console.log(`${user.name} logged in with id: ${user.uid}`)
+// }
+// >>>>>>>>FUNCTION SIGNATURES
+// this one will return void and I can define it before actually writing the function
+// let greet: (a: string, b: string) => void;
+// greet = (name:string, greeting:string) => {
+//   console.log(`${name}, says ${greeting}`)
+// }
+// // if I define the type of the return and it's not the same as the actual type 
+// // of the returned value it will throw an error, don't forget to return the result
+// let calculate: (a:number, b:number, c:string) => number;
+// calculate = (numOne: number, numTwo: number, action: string) => {
+//   if(action === "add") {
+//     return numOne + numTwo
+//   }else {
+//     return numOne - numTwo
+//   }
 // }
