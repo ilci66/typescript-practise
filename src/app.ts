@@ -229,12 +229,30 @@ form.addEventListener('submit', (e: Event) => {
 
 // // >>>>> GENERICS
 // basically reusable blocks of code which can be used with different kinds of code
-
-const addUID = (obj: object) => {
+// the "T" here, captures whatever item is passed in here, to prevent other types being
+// used as arguments we add "extends object" so we accept objects
+// the part after extends is up to me really could be this too "extends {name:string}"
+// this way it would accept objects with name property which is type string
+const addUID = <T extends object>(obj: T) => {
   let uid = Math.floor(Math.random() * 100);
   return {...obj, uid};
 }
-
 let exampleOne = addUID({ name: "mario", age:"32" })
+// we are not specifiying what the object will be so console.log(exampleOne.name)
+// throws an error, but this can be fixed by using a generic and defining what it will look like
+// "T" is added to fix that issue
+console.log(exampleOne.name)
 
-console.log(exampleOne)
+// Generics can also be used with interfaces, remember interfaces define how an object should look
+// by using generics here what I'm really saying is I will define the type of data as I'm assigning it
+// in the future when I use this interface
+interface Resource<T> {
+  uid: number;
+  resourceName: string;
+  data: T;
+}
+
+// So all of these are fine because of the use of generics, as long as I define it here
+const exampleTwo: Resource<object> = { uid: 2, resourceName: 'person', data: { name: "ilker" } }
+const exampleThree: Resource<string> = { uid: 3, resourceName: 'person', data: "ilker" }
+const exampleFour: Resource<string[]> = { uid: 4, resourceName: 'person', data: ["ilker", "akbiyik"] }

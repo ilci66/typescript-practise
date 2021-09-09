@@ -192,9 +192,20 @@ form.addEventListener('submit', (e) => {
 });
 // // >>>>> GENERICS
 // basically reusable blocks of code which can be used with different kinds of code
+// the "T" here, captures whatever item is passed in here, to prevent other types being
+// used as arguments we add "extends object" so we accept objects
+// the part after extends is up to me really could be this too "extends {name:string}"
+// this way it would accept objects with name property which is type string
 const addUID = (obj) => {
     let uid = Math.floor(Math.random() * 100);
     return Object.assign(Object.assign({}, obj), { uid });
 };
 let exampleOne = addUID({ name: "mario", age: "32" });
-console.log(exampleOne);
+// we are not specifiying what the object will be so console.log(exampleOne.name)
+// throws an error, but this can be fixed by using a generic and defining what it will look like
+// "T" is added to fix that issue
+console.log(exampleOne.name);
+// So all of these are fine because of the use of generics, as long as I define it here
+const exampleTwo = { uid: 2, resourceName: 'person', data: { name: "ilker" } };
+const exampleThree = { uid: 3, resourceName: 'person', data: "ilker" };
+const exampleFour = { uid: 4, resourceName: 'person', data: ["ilker", "akbiyik"] };
