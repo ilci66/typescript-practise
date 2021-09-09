@@ -1,5 +1,6 @@
 // importing the Invoice class with "js" extension not "ts", important
 import { Invoice } from './classes/Invoice.js';
+import { ListTemplate } from './classes/ListTemplate.js';
 import { Payment } from './classes/Payment.js';
 // I don't like to use /* */ so gonna do double comment 
 // You need to put the "!" in the end if you know the element exists
@@ -173,6 +174,9 @@ const type = document.querySelector('#type');
 const tofrom = document.querySelector('#tofrom');
 const details = document.querySelector('#details');
 const amount = document.querySelector('#amount');
+// now to create the list instance making use of the class
+const ul = document.querySelector('ul');
+const list = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let doc;
@@ -182,5 +186,7 @@ form.addEventListener('submit', (e) => {
     else {
         doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
     }
-    console.log(doc);
+    // console.log(doc)
+    // instead of just loging it I can now make use of the render method and create list elements on the dom
+    list.render(doc, type.value, 'end');
 });

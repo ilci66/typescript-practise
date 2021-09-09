@@ -26,10 +26,10 @@ export class ListTemplate {
     li.append('p')
     if(pos === "start"){
       // in costructor I chose the type as HTMLUListElement for the container
-      this.container.prepend('li')
+      this.container.prepend(li)
     }else{
-      this.container.append('li')
+      this.container.append(li)
     }
-    
+    console.log("nope")
   }
 }
