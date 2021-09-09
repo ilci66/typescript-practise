@@ -16,6 +16,16 @@ export class ListTemplate {
         const h4 = document.createElement('h4');
         h4.innerText = heading;
         li.append(h4);
-        //to be continued
+        const p = document.createElement('p');
+        // as I chose the type as the interface that has format() I know I can use format()
+        p.innerText = item.format();
+        li.append('p');
+        if (pos === "start") {
+            // in costructor I chose the type as HTMLUListElement for the container
+            this.container.prepend('li');
+        }
+        else {
+            this.container.append('li');
+        }
     }
 }
