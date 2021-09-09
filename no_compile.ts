@@ -1,1 +1,0 @@
-console.log('this won\'t be compiled because I only included src directory in config' )

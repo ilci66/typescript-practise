@@ -225,3 +225,16 @@ form.addEventListener('submit', (e: Event) => {
   // instead of just loging it I can now make use of the render method and create list elements on the dom
   list.render(doc, type.value, 'end')
 })
+
+
+// // >>>>> GENERICS
+// basically reusable blocks of code which can be used with different kinds of code
+
+const addUID = (obj: object) => {
+  let uid = Math.floor(Math.random() * 100);
+  return {...obj, uid};
+}
+
+let exampleOne = addUID({ name: "mario", age:"32" })
+
+console.log(exampleOne)
