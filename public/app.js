@@ -169,27 +169,26 @@ import { Payment } from './classes/Payment.js';
 //   console.log(doc)
 // })
 // // >>>>> RENDERING AN HTML TEMPLATE
-const form = document.querySelector('.new-item-form');
-const type = document.querySelector('#type');
-const tofrom = document.querySelector('#tofrom');
-const details = document.querySelector('#details');
-const amount = document.querySelector('#amount');
-// now to create the list instance making use of the class
-const ul = document.querySelector('ul');
-const list = new ListTemplate(ul);
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let doc;
-    if (type.value === "invoice") {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
-    }
-    else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
-    }
-    // console.log(doc)
-    // instead of just loging it I can now make use of the render method and create list elements on the dom
-    list.render(doc, type.value, 'end');
-});
+// const form = document.querySelector('.new-item-form') as HTMLFormElement
+// const type = document.querySelector('#type') as HTMLSelectElement;
+// const tofrom = document.querySelector('#tofrom') as HTMLInputElement;
+// const details = document.querySelector('#details') as HTMLInputElement;
+// const amount = document.querySelector('#amount') as HTMLInputElement;
+// // now to create the list instance making use of the class
+// const ul = document.querySelector('ul')!;
+// const list = new ListTemplate(ul)
+// form.addEventListener('submit', (e: Event) => {
+//   e.preventDefault();
+//   let doc: HasFormatter;
+//   if(type.value === "invoice"){
+//     doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber)
+//   }else {
+//     doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
+//   }
+//   // console.log(doc)
+//   // instead of just loging it I can now make use of the render method and create list elements on the dom
+//   list.render(doc, type.value, 'end')
+// })
 // // >>>>> GENERICS
 // // basically reusable blocks of code which can be used with different kinds of code
 // // the "T" here, captures whatever item is passed in here, to prevent other types being
@@ -239,3 +238,36 @@ form.addEventListener('submit', (e) => {
 // // in the console what appears as their resourceType is a number instead of the types I have defined
 // // This way when I'm creating these objects I don't need to remember the indexes, useful stuff 
 // console.log(exOne, exTwo)
+// // >>>> TUPLES
+// // updating the code with tuples
+// // one we define a certain position to be a certain type we can't change it, both type and position matters
+// let tup: [string, number, boolean];
+// tup = ["raiden", 2000, true];
+// // new values can be assigned while being careful about the position and the type
+// tup[2] = false;
+// console.log(tup)
+const form = document.querySelector('.new-item-form');
+const type = document.querySelector('#type');
+const tofrom = document.querySelector('#tofrom');
+const details = document.querySelector('#details');
+const amount = document.querySelector('#amount');
+// now to create the list instance making use of the class
+const ul = document.querySelector('ul');
+const list = new ListTemplate(ul);
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // tuples can be used here 
+    let values;
+    values = [tofrom.value, details.value, amount.valueAsNumber];
+    let doc;
+    if (type.value === "invoice") {
+        // don't forget to use spread operator to get rid of the brackets, looks cleaner
+        doc = new Invoice(...values);
+    }
+    else {
+        doc = new Payment(...values);
+    }
+    // console.log(doc)
+    // instead of just loging it I can now make use of the render method and create list elements on the dom
+    list.render(doc, type.value, 'end');
+});
